@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/dk488/source/repos/NeuralNetwork/out/build/x64-debug/NeuralNetwork/CMakeFiles/NeuralNetwork.dir/embed.manifest"
