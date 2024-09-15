@@ -1,5 +1,5 @@
 # ninja log v5
-21	1840	7476048690119312	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
-1843	2132	7476048692367261	NeuralNetwork/NeuralNetwork.exe	ae2698e102d1229d
+6	1921	7476761905410217	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
+1922	2265	7476761908050690	NeuralNetwork/NeuralNetwork.exe	ae2698e102d1229d
 16	2543	7476042269018448	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	f0a04ebbaa1ea88f
 25	2784	7476042271322407	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	8d1a54702a0355dc

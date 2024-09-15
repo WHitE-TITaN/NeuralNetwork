@@ -98,6 +98,13 @@ build NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\TextProcessing.cpp.obj:
   TARGET_COMPILE_PDB = NeuralNetwork\CMakeFiles\NeuralNetwork.dir\
   TARGET_PDB = NeuralNetwork\NeuralNetwork.pdb
 
+build NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\LSTM.cpp.obj: CXX_COMPILER__NeuralNetwork_unscanned_Debug C$:\Users\dk488\source\repos\NeuralNetwork\NeuralNetwork\Headers\LSTM.cpp || cmake_object_order_depends_target_NeuralNetwork
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 -ZI
+  OBJECT_DIR = NeuralNetwork\CMakeFiles\NeuralNetwork.dir
+  OBJECT_FILE_DIR = NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers
+  TARGET_COMPILE_PDB = NeuralNetwork\CMakeFiles\NeuralNetwork.dir\
+  TARGET_PDB = NeuralNetwork\NeuralNetwork.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target NeuralNetwork
@@ -106,7 +113,7 @@ build NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\TextProcessing.cpp.obj:
 #############################################
 # Link the executable NeuralNetwork\NeuralNetwork.exe
 
-build NeuralNetwork\NeuralNetwork.exe: CXX_EXECUTABLE_LINKER__NeuralNetwork_Debug NeuralNetwork\CMakeFiles\NeuralNetwork.dir\NeuralNetwork.cpp.obj NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\SelfAttention.cpp.obj NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\TextProcessing.cpp.obj
+build NeuralNetwork\NeuralNetwork.exe: CXX_EXECUTABLE_LINKER__NeuralNetwork_Debug NeuralNetwork\CMakeFiles\NeuralNetwork.dir\NeuralNetwork.cpp.obj NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\SelfAttention.cpp.obj NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\TextProcessing.cpp.obj NeuralNetwork\CMakeFiles\NeuralNetwork.dir\Headers\LSTM.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -ZI
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

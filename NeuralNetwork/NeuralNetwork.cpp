@@ -37,12 +37,10 @@ int main() {
 
 		//generating random vectors for every word ->
 		std::vector<std::vector<double>> VectorGenerated = dk488621.convertTokensToVectors(processedString);
+
+		std::vector<double> ReducedDimensionality = dk488621.averagePooling(VectorGenerated);
 		std::cout << "\n\n {   ";
-		for (auto x : VectorGenerated) {
-			std::cout << "\t\t<";
-			for (auto y : x) {
-				std::cout << "[ " << y << " ], ";
-			}
+		for (auto x : ReducedDimensionality) {
 			std::cout << ">\n";
 		}
 		std::cout << "   } \n\n";
@@ -65,21 +63,7 @@ int main() {
 
 
 
-	/*std::vector<std::vector<double>> InterDependentVector = DynamicMultiplication(VectorGenerated, dk488621.size);
-	std::cout << "\n\t\t\tCONTEXT AWAIR MATRIX DYNAMIC PROGRAMMING\n\n\n {   ";
-	for (auto x : InterDependentVector) {
-		std::cout << "\t\t<";
-		for (auto y : x) {
-			std::cout << "[ " << y << " ], ";
-		}
-		std::cout << ">\n";
-	}
-	std::cout << "   } \n\n";
-
-
-
-
-	std::vector<std::vector<double>> InterDependentVector2 = Softmax(InterDependentVector, dk488621.size);
+	/*std::vector<std::vector<double>> InterDependentVector2 = Softmax(InterDependentVector, dk488621.size);
 	std::cout << "\n\t\t\t\t\tSOFTMAX NORMILIZATION \n\n\n {   ";
 	for (auto x : InterDependentVector2) {
 		std::cout << "\t\t<";
