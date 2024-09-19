@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Headers/TextProcessing.h"
 #include "Headers/SelfAttention.h"
+#include "Headers/LSTM.h"
 #include <string>
 #include <vector>
 
@@ -17,7 +18,7 @@ int main() {
 
 	std::cout << "\n\n\n\t\t\t\tWELLCOME";
 	std::string UInput;
-
+	bool backPropogation=false;
 
 	while (true) {
 		std::cout << "\n\t\t May i help you ->> ";
@@ -25,7 +26,16 @@ int main() {
 		if (UInput == "exit" || UInput == "quit" || UInput == "00") {
 			break;
 		}
-
+		if (UInput == "/mode1") {
+			backPropogation = true;
+			std::cout << "\n mode enabled ->>";
+			continue;
+		}
+		else if (UInput == "/mode0") {
+			backPropogation = false;
+			std::cout << "\n mode desable";
+			continue;
+		}
 		std::vector<std::string> processedString = dk488621.tokenize(UInput); // the tocknized version of the input 
 
 		std::cout << "\n\t\t TOKENIZED -> "; // printing the tockens 
@@ -44,6 +54,26 @@ int main() {
 			std::cout << ">\n";
 		}
 		std::cout << "   } \n\n";
+
+
+
+
+		std::vector<double>outPut = lstmMainFlow(ReducedDimensionality);
+		std::cout << "\n THE OUTPUT \n\n {   ";
+		for (auto x : outPut) {
+			std::cout << ">\n";
+		}
+		std::cout << "   } \n\n";
+
+
+		if (backPropogation == true) {
+			std::cout << "Enter the actual value ->> ";
+			std::getline(std::cin, UInput);
+			std::vector<std::string> backProcessedString = dk488621.tokenize(UInput); // the tocknized version of the input 
+			std::vector<std::vector<double>> backVectorGenerated = dk488621.convertTokensToVectors(backProcessedString);
+
+		}
+
 	}
 
 
