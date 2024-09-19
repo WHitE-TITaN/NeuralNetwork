@@ -1,6 +1,15 @@
 # ninja log v5
-6	1872	7483494993405716	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
-1922	2265	7476761908050690	NeuralNetwork/NeuralNetwork.exe	ae2698e102d1229d
+35	1624	7484305992441327	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
+1624	1839	7484305994161479	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745
 16	2543	7476042269018448	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	f0a04ebbaa1ea88f
 25	2784	7476042271322407	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	8d1a54702a0355dc
-15	1847	7483494993158750	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/LSTM.cpp.obj	70862d5bf65c0626
+47	1546	7484294532630536	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/LSTM.cpp.obj	70862d5bf65c0626
+3	1801	7484312120455508	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
+1803	2189	7484312123590549	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745
+18	1475	7484315117623477	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
+27	1594	7484315118805736	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	8d1a54702a0355dc
+1595	1913	7484315121373880	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745
+3	1795	7484319256991657	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	8d1a54702a0355dc
+1796	2030	7484319258715695	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745
+21	1495	7484322091691197	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
+1496	1718	7484322093503414	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745

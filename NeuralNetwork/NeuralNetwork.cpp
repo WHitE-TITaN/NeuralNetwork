@@ -15,14 +15,14 @@ int main() {
 
 	//loading the files
 	dk488621.loadGloveVectors("C:/Users/dk488/source/repos/vocabulary/glove.txt");
-
+	bool backPropogation = false;
 	std::cout << "\n\n\n\t\t\t\tWELLCOME";
 	std::string UInput;
-	bool backPropogation=false;
 
 	while (true) {
 		std::cout << "\n\t\t May i help you ->> ";
 		std::getline(std::cin, UInput); //taking the input ->> user 
+
 		if (UInput == "exit" || UInput == "quit" || UInput == "00") {
 			break;
 		}
@@ -36,6 +36,7 @@ int main() {
 			std::cout << "\n mode desable";
 			continue;
 		}
+
 		std::vector<std::string> processedString = dk488621.tokenize(UInput); // the tocknized version of the input 
 
 		std::cout << "\n\t\t TOKENIZED -> "; // printing the tockens 
@@ -51,28 +52,25 @@ int main() {
 		std::vector<double> ReducedDimensionality = dk488621.averagePooling(VectorGenerated);
 		std::cout << "\n\n {   ";
 		for (auto x : ReducedDimensionality) {
-			std::cout << ">\n";
+			std::cout << ">\n"<< x;
 		}
 		std::cout << "   } \n\n";
 
 
 
-
-		std::vector<double>outPut = lstmMainFlow(ReducedDimensionality);
+		/*std::vector<double>outPut = lstmMainFlow(ReducedDimensionality);
 		std::cout << "\n THE OUTPUT \n\n {   ";
 		for (auto x : outPut) {
 			std::cout << ">\n";
 		}
 		std::cout << "   } \n\n";
 
-
 		if (backPropogation == true) {
 			std::cout << "Enter the actual value ->> ";
 			std::getline(std::cin, UInput);
 			std::vector<std::string> backProcessedString = dk488621.tokenize(UInput); // the tocknized version of the input 
 			std::vector<std::vector<double>> backVectorGenerated = dk488621.convertTokensToVectors(backProcessedString);
-
-		}
+		}*/
 
 	}
 

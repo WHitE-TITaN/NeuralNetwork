@@ -7,8 +7,8 @@
 #include <cmath>
 #include <unordered_map>
 
-double longTermMemory=0 /* cell state */,
-	shortTermMemory = 0; /* Hidden state */
+extern double longTermMemory /* cell state */,
+	shortTermMemory; /* Hidden state */
 
 class layer {
 	public:
@@ -32,10 +32,6 @@ class layer {
 			return (double)rand() / RAND_MAX - 0.5;
 		}
 };
-
-//declaring layers to store the wights and biases 
-layer longTermRemember;
-layer percentageLTMPotential, potentialLTM, percentageSTMPotental;
 
 
 double sigmoid_Activation(double entity_Vector);

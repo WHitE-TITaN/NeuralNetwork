@@ -104,6 +104,12 @@ std::vector<double> userInput::RandomVectorGenerator() {
 std::vector<std::vector<double>> userInput::convertTokensToVectors(const std::vector<std::string>& tokens) {
 	std::vector<std::vector<double>> IndependentVectors;
 
+	std::cout << "Sample GloVe vectors loaded:\n";
+	for (const auto& pair : glove_vectors) {
+		std::cout << "Word: " << pair.first << ", Vector size: " << pair.second.size() << "\n";
+		break; // Only print the first word to avoid flooding the console
+	}
+
 	for (const auto& token : tokens) {
 		if (glove_vectors.find(token) != glove_vectors.end()) {
 			// Use the pre-trained GloVe vector
@@ -115,7 +121,6 @@ std::vector<std::vector<double>> userInput::convertTokensToVectors(const std::ve
 			IndependentVectors.push_back(NewGeneratedVector);
 		}
 	}
-
 	return IndependentVectors;
 }
 
