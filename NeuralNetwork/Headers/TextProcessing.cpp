@@ -106,7 +106,7 @@ std::vector<std::vector<double>> userInput::convertTokensToVectors(const std::ve
 
 	std::cout << "Sample GloVe vectors loaded:\n";
 	for (const auto& pair : glove_vectors) {
-		std::cout << "Word: " << pair.first << ", Vector size: " << pair.second.size() << "\n";
+		std::cout <<"  Vector size: " << pair.second.size() << "\n";
 		break; // Only print the first word to avoid flooding the console
 	}
 

@@ -18,6 +18,8 @@ int main() {
 	bool backPropogation = false;
 	std::cout << "\n\n\n\t\t\t\tWELLCOME";
 	std::string UInput;
+	std::vector<std::string> backProcessedString;
+	std::vector<double> reducedBackPropVector;
 
 	while (true) {
 		std::cout << "\n\t\t May i help you ->> ";
@@ -50,27 +52,37 @@ int main() {
 		std::vector<std::vector<double>> VectorGenerated = dk488621.convertTokensToVectors(processedString);
 
 		std::vector<double> ReducedDimensionality = dk488621.averagePooling(VectorGenerated);
-		std::cout << "\n\n {   ";
+		std::cout << "\n\n AVERAGE POOLED \n {   ";
 		for (auto x : ReducedDimensionality) {
-			std::cout << ">\n"<< x;
+			std::cout <<"> " << x<<"   ";
 		}
 		std::cout << "   } \n\n";
 
-
-
-		/*std::vector<double>outPut = lstmMainFlow(ReducedDimensionality);
-		std::cout << "\n THE OUTPUT \n\n {   ";
-		for (auto x : outPut) {
-			std::cout << ">\n";
-		}
-		std::cout << "   } \n\n";
 
 		if (backPropogation == true) {
 			std::cout << "Enter the actual value ->> ";
 			std::getline(std::cin, UInput);
-			std::vector<std::string> backProcessedString = dk488621.tokenize(UInput); // the tocknized version of the input 
+			backProcessedString = dk488621.tokenize(UInput); // the tocknized version of the input 
 			std::vector<std::vector<double>> backVectorGenerated = dk488621.convertTokensToVectors(backProcessedString);
-		}*/
+			reducedBackPropVector = dk488621.averagePooling(backVectorGenerated);
+		}
+		std::cout << "\n THE ACTUAL OUTPUT \n\n {   ";
+		for (auto x : reducedBackPropVector) {
+			std::cout << ">" << x;
+		}
+		std::cout << "   } \n\n";
+
+
+		std::vector<double>finalOutPut = lstmMainFlow(ReducedDimensionality);
+
+		lstmBackprop(finalOutPut, reducedBackPropVector, ReducedDimensionality);
+		std::cout << "\n THE OUTPUT \n\n {   ";
+		for (auto x : finalOutPut) {
+			std::cout << ">"<<x;
+		}
+		std::cout << "   } \n\n";
+
+		
 
 	}
 

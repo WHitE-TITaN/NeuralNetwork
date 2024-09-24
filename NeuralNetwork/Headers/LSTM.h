@@ -41,6 +41,10 @@ double tanh_Activation(double entity_Vector);
 void forgetGate(double currentInputVector); /* determine how much the longterm memory will be affected both + & - */
 void inputGate(double currentInputVector); /* determines how the long term memory willl be updated */
 void outputGate(double currentInputVector); /* determines the out put or future and the short term memory update */
+//frount propogation ->>>>>
 std::vector<double> lstmMainFlow(std::vector<double> wordEmbedding);
+
+//back propogation <<<<<-
+void lstmBackprop(std::vector<double> predictedOutput, std::vector<double> actualOutput, std::vector<double> wordEmbedding);
 
 #endif
