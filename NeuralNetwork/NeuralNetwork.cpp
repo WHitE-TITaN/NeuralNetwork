@@ -86,9 +86,13 @@ int main() {
 				std::cout << ">" << x << " ";
 			}
 			std::cout << "   } \n\n";
+
+
+			std::string humanReadableOutput = mapOutputToWords(finalOutPut, dk488621.glove_vectors);
+			std::cout << "Readable Output: " << humanReadableOutput << "\n";
 		}
 
-		
+
 
 	}
 

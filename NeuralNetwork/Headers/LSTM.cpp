@@ -148,3 +148,6 @@ void lstmBackprop(std::vector<double> predictedOutput, std::vector<double> actua
 		backPropForgetGate(dLoss_dSTM, wordEmbedding[t]);
 	}
 }
+
+
+
