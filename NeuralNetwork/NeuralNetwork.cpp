@@ -25,6 +25,8 @@ int main() {
 		std::cout << "\n\t\t May i help you ->> ";
 		std::getline(std::cin, UInput); //taking the input ->> user 
 
+
+
 		if (UInput == "exit" || UInput == "quit" || UInput == "00") {
 			break;
 		}
@@ -65,22 +67,26 @@ int main() {
 			backProcessedString = dk488621.tokenize(UInput); // the tocknized version of the input 
 			std::vector<std::vector<double>> backVectorGenerated = dk488621.convertTokensToVectors(backProcessedString);
 			reducedBackPropVector = dk488621.averagePooling(backVectorGenerated);
-		}
-		std::cout << "\n THE ACTUAL OUTPUT \n\n {   ";
-		for (auto x : reducedBackPropVector) {
-			std::cout << ">" << x;
-		}
-		std::cout << "   } \n\n";
 
 
-		std::vector<double>finalOutPut = lstmMainFlow(ReducedDimensionality);
+			// back propgation ->>
 
-		lstmBackprop(finalOutPut, reducedBackPropVector, ReducedDimensionality);
-		std::cout << "\n THE OUTPUT \n\n {   ";
-		for (auto x : finalOutPut) {
-			std::cout << ">"<<x;
+			std::cout << "\n THE ACTUAL OUTPUT \n\n {   ";
+			for (auto x : reducedBackPropVector) {
+				std::cout << ">" << x << " ";
+			}
+			std::cout << "   } \n\n";
+
+
+			std::vector<double>finalOutPut = lstmMainFlow(ReducedDimensionality);
+
+			lstmBackprop(finalOutPut, reducedBackPropVector, ReducedDimensionality);
+			std::cout << "\n THE OUTPUT \n\n {   ";
+			for (auto x : finalOutPut) {
+				std::cout << ">" << x << " ";
+			}
+			std::cout << "   } \n\n";
 		}
-		std::cout << "   } \n\n";
 
 		
 

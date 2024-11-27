@@ -2,7 +2,7 @@
 
 double longTermMemory =0 /* cell state */,
 shortTermMemory=0, /* Hidden state */
-learningRate = 0.001; /* learning rate */
+learningRate = 0.99; /* learning rate */
 
 
 
@@ -14,6 +14,8 @@ double outputActivation;
 
 //declaring layers to store the wights and biases 
 layer longTermRemember;
+
+
 layer percentageLTMPotential, potentialLTM, percentageSTMPotental;
 
 double sigmoid_Activation(double entity_Vector) {
@@ -73,6 +75,12 @@ void outputGate(double currentInputVector) {
 
 //main flow or driver
 std::vector<double> lstmMainFlow(std::vector<double> wordEmbedding) {
+	//if the input is empty for backpropagation
+	if (wordEmbedding.empty()) {
+		std::cerr << "Error: Input vector is empty.\n";
+		return std::vector<double>();
+	}
+
 	std::vector<double> producedOutPut;
 	for (auto x : wordEmbedding) {
 		forgetGate(x);
@@ -87,7 +95,7 @@ std::vector<double> lstmMainFlow(std::vector<double> wordEmbedding) {
 //backpropogation vectors 
 void backPropForgetGate(double dLoss, double currentVector) {
 	double dLoss_ForgetGate = dLoss * longTermMemory;//calculating grdient desent 
-	double dloss_ForgetGateDerivative = sigmoid_Activation(LTMactivation) * 1 - sigmoid_Activation(LTMactivation);// deravitive of sigmoid function;
+	double dloss_ForgetGateDerivative = sigmoid_Activation(LTMactivation) * (1 - sigmoid_Activation(LTMactivation));// deravitive of sigmoid function;
 
 	longTermRemember.shortTermWeight -= learningRate * dLoss_ForgetGate * dloss_ForgetGateDerivative * shortTermMemory;
 	longTermRemember.bias -= learningRate * dLoss_ForgetGate * dloss_ForgetGateDerivative;
@@ -124,6 +132,11 @@ void backPropOutputGate(double dLoss, double currentVector) {
 }
 
 void lstmBackprop(std::vector<double> predictedOutput, std::vector<double> actualOutput, std::vector<double> wordEmbedding) {
+	//checking the size
+	if (predictedOutput.size() != actualOutput.size()) {
+		std::cerr << "Error: Size mismatch between predicted and actual outputs.\n";
+		return;
+	}
 	// Loop through each timestep in reverse for backpropagation through time
 	for (int t = wordEmbedding.size() - 1; t >= 0; --t) {
 		// Calculate the loss derivative wrt STM (short-term memory)
