@@ -15,7 +15,7 @@
 ########################
 
 //Path to a program.
-CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/lib.exe
+CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/Hostx64/x64/lib.exe
 
 //No help, variable specified on the command line.
 CMAKE_BUILD_TYPE:STRING=Debug
@@ -87,7 +87,7 @@ CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/Users/dk488/source/repos/NeuralNetwor
 CMAKE_INSTALL_PREFIX:PATH=C:/Users/dk488/source/repos/NeuralNetwork/out/install/x64-debug
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/link.exe
+CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/Hostx64/x64/link.exe
 
 //make program
 CMAKE_MAKE_PROGRAM:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe

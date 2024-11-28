@@ -1,14 +1,17 @@
-# ninja log v5
-33	2210	7488938931471140	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
-1663	2086	7533033280405628	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745
-16	2543	7476042269018448	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	f0a04ebbaa1ea88f
-48	2040	7486291109407418	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	8d1a54702a0355dc
-7	1662	7533033277385415	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/LSTM.cpp.obj	70862d5bf65c0626
-111	2355	7544405414495204	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/LSTM.cpp.obj	70862d5bf65c0626
-97	2518	7544405416223605	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
-2519	2926	7544405419205897	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745
-38	2351	7544442755270400	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/LSTM.cpp.obj	70862d5bf65c0626
-17	2493	7544442756684512	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	f0a04ebbaa1ea88f
-5	2603	7544442757780995	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	e9fbfca243c971d4
-29	2752	7544442759358740	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	8d1a54702a0355dc
-2752	3230	7544442763134087	NeuralNetwork/NeuralNetwork.exe	b0c6743c069ba745
+# ninja log v6
+58	1500	7544769110782602	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/LSTM.cpp.obj	834841b942b11968
+38	1655	7544769110582381	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
+48	1738	7544769110682479	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
+27	1583	7544769110475620	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
+1739	2166	7544769127588299	NeuralNetwork/NeuralNetwork.exe	1a4a577d984775bb
+29	2564	7545153760235226	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
+42	2615	7545153760365224	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
+51	2504	7545154918906607	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
+65	2563	7545154919056842	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
+28	2460	7545155237351844	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
+2461	2824	7545155261690044	NeuralNetwork/NeuralNetwork.exe	1a4a577d984775bb
+32	2967	7545158865993403	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
+48	2991	7545159574834472	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
+57	3279	7545159574990609	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
+52	2407	7545159841636552	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
+2408	2642	7545159865192715	NeuralNetwork/NeuralNetwork.exe	1a4a577d984775bb
