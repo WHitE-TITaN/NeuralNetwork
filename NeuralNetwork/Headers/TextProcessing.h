@@ -42,12 +42,15 @@ class userInput {
 //the calculator
 double cosineSimilarity(const std::vector<double>& vec1, const std::vector<double>& vec2);
 //the mapper
-std::string mapOutputToWords(const std::vector<double>& lstmOutput,
-	const std::unordered_map<std::string, std::vector<double>>& gloveVectors);
+std::vector<std::string> mapOutputToWords(const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
+	const std::vector<double>& outputVector, int topN);
+
 //the finder
 std::string findClosestWord(const std::vector<double>& outputVector,
 	const std::unordered_map<std::string, std::vector<double>>& gloveVectors);
 
+
+std::string assemblePhrase(const std::vector<std::string>& words);
 
 
 #endif

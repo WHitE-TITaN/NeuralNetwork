@@ -87,9 +87,11 @@ int main() {
 			}
 			std::cout << "   } \n\n";
 
+			std::vector<std::string> mappedWords = mapOutputToWords(dk488621.glove_vectors, finalOutPut, 3); // Top 3 words
+			std::string constructedPhrase = assemblePhrase(mappedWords);
 
-			std::string humanReadableOutput = mapOutputToWords(finalOutPut, dk488621.glove_vectors);
-			std::cout << "Readable Output: " << humanReadableOutput << "\n";
+			std::cout << "Constructed Phrase: " << constructedPhrase << std::endl;
+
 		}
 
 

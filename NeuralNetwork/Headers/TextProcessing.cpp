@@ -141,7 +141,7 @@ std::vector<double> userInput::averagePooling(const std::vector<std::vector<doub
 
 
 
-
+//word embadding-> output
 double cosineSimilarity(const std::vector<double>& vec1, const std::vector<double>& vec2) {
 	double dotProduct = 0.0, normA = 0.0, normB = 0.0;
 	for (size_t i = 0; i < vec1.size(); ++i) {
@@ -174,7 +174,35 @@ std::string findClosestWord(const std::vector<double>& outputVector,
 
 
 
-std::string mapOutputToWords(const std::vector<double>& lstmOutput,
-	const std::unordered_map<std::string, std::vector<double>>& gloveVectors) {
-	return findClosestWord(lstmOutput, gloveVectors);
+std::vector<std::string> mapOutputToWords(const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
+	const std::vector<double>& outputVector, int topN=3) {
+	std::vector<std::pair<std::string, double>> similarityScores;
+
+	for (const auto& [word, vector] : gloveVectors) {
+		double similarity = cosineSimilarity(outputVector, vector);
+		similarityScores.push_back({ word, similarity });
+	}
+
+	// Sort words by similarity in descending order
+	std::sort(similarityScores.begin(), similarityScores.end(), [](const auto& a, const auto& b) {
+		return a.second > b.second;
+		});
+
+	// Collect the top N words
+	std::vector<std::string> topWords;
+	for (int i = 0; i < std::min(topN, (int)similarityScores.size()); ++i) {
+		topWords.push_back(similarityScores[i].first);
+	}
+
+	return topWords;
+}
+
+
+
+std::string assemblePhrase(const std::vector<std::string>& words) {
+	std::string phrase;
+	for (const auto& word : words) {
+		phrase += word + " ";
+	}
+	return phrase;
 }
