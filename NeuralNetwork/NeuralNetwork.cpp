@@ -20,6 +20,7 @@ int main() {
 	std::string UInput;
 	std::vector<std::string> backProcessedString;
 	std::vector<double> reducedBackPropVector;
+	dk488621.addEOS(dk488621.glove_vectors, 50);
 
 	while (true) {
 		std::cout << "\n\t\t May i help you ->> ";

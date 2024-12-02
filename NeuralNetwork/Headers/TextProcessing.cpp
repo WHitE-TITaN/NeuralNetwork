@@ -56,7 +56,7 @@ int userInput::Size() {
 
 
 // generating random vector for token
-std::vector<double> userInput::RandomVectorGenerator() {
+std::vector<double> userInput::RandomVectorGenerator(int size) {
 	std::vector<double> GenetreatedVector(size);  // vector array size of total no. of elements in text
 
 
@@ -69,8 +69,12 @@ std::vector<double> userInput::RandomVectorGenerator() {
 	return GenetreatedVector;
 }
 
-
-
+void userInput::addEOS(std::unordered_map<std::string, std::vector<double>>& gloveVectors, int vectorSize) {
+	userInput EOSobj;
+	// Add <EOS> with a random or zero vector
+	std::vector<double> eosVector = EOSobj.RandomVectorGenerator(vectorSize); // or std::vector<double>(vectorSize, 0.0);
+	gloveVectors["<EOS>"] = eosVector;
+}
 
 
 //std::vector<std::vector<double>> userInput::convertTokensToVectors(const std::vector<std::string>& tokens) {
@@ -117,7 +121,7 @@ std::vector<std::vector<double>> userInput::convertTokensToVectors(const std::ve
 		}
 		else {
 			// Fall back to generating a random vector if word not found in GloVe
-			auto NewGeneratedVector = RandomVectorGenerator();
+			auto NewGeneratedVector = RandomVectorGenerator(50);
 			IndependentVectors.push_back(NewGeneratedVector);
 		}
 	}
@@ -196,6 +200,8 @@ std::vector<std::string> mapOutputToWords(const std::unordered_map<std::string, 
 
 	return topWords;
 }
+
+
 
 
 
