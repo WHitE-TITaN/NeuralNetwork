@@ -44,6 +44,7 @@ std::vector<std::string> userInput::tokenize(std::string& UInput) {
 		tockens.push_back(tocken);	// pushing the word to vector
 		size++;
 	}
+	tockens.push_back("<EOS>");
 	std::cout << "\n\n\tsize array ->> " << size;
 	return tockens;
 }
@@ -146,7 +147,11 @@ std::vector<double> userInput::averagePooling(const std::vector<std::vector<doub
 
 
 //word embadding-> output
-double cosineSimilarity(const std::vector<double>& vec1, const std::vector<double>& vec2) {
+double cosineSimilarity(const std::vector<double>& vec1, const std::vector<double>& vec2,
+	const std::unordered_map<std::string, int>& wordUsage,
+	const std::string& candidateWord,
+	double temperature) {
+	// Step 1: Compute dot product and norms
 	double dotProduct = 0.0, normA = 0.0, normB = 0.0;
 	for (size_t i = 0; i < vec1.size(); ++i) {
 		dotProduct += vec1[i] * vec2[i];
@@ -154,37 +159,54 @@ double cosineSimilarity(const std::vector<double>& vec1, const std::vector<doubl
 		normB += vec2[i] * vec2[i];
 	}
 	if (normA == 0 || normB == 0) return 0; // Avoid division by zero
-	return dotProduct / (sqrt(normA) * sqrt(normB));
-}
 
+	// Step 2: Compute raw cosine similarity
+	double similarity = dotProduct / (sqrt(normA) * sqrt(normB));
 
+	// Step 3: Apply threshold filtering
+	if (similarity < COSINE_THRESHOLD) return 0; // Filter out low scores
 
-std::string findClosestWord(const std::vector<double>& outputVector,
-	const std::unordered_map<std::string, std::vector<double>>& gloveVectors) {
-	std::string closestWord;
-	double maxSimilarity = -1.0;
-
-	for (const auto& [word, vector] : gloveVectors) {
-		double similarity = cosineSimilarity(outputVector, vector);
-		if (similarity > maxSimilarity) {
-			maxSimilarity = similarity;
-			closestWord = word;
-		}
+	// Step 4: Apply repetition penalty (if the word has been used before)
+	if (wordUsage.count(candidateWord)) {
+		int usageCount = wordUsage.at(candidateWord);
+		similarity -= usageCount * REPETITION_PENALTY; // Penalize based on usage
+		if (similarity < 0) similarity = 0; // Ensure non-negative similarity
 	}
 
-	return closestWord;
+	// Step 5: Apply temperature scaling (optional, for randomness)
+	if (temperature > 0) {
+		similarity = pow(similarity, 1.0 / temperature);
+	}
+
+	return similarity;
 }
 
 
 
 
-std::vector<std::string> mapOutputToWords(const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
-	const std::vector<double>& outputVector, int topN=3) {
+
+std::vector<std::string> mapOutputToWords(
+	const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
+	const std::vector<double>& outputVector,
+	int topN,
+	const std::unordered_map<std::string, int>& wordUsage, // Optional
+	double temperature) {
+
 	std::vector<std::pair<std::string, double>> similarityScores;
 
+	// Debug: Limit vocabulary size
+	int debugVocabularyLimit = 5000;
+	int counter = 0;
+
 	for (const auto& [word, vector] : gloveVectors) {
-		double similarity = cosineSimilarity(outputVector, vector);
-		similarityScores.push_back({ word, similarity });
+		if (counter++ > debugVocabularyLimit) break; // Stop after 5000 words
+
+		// Use the updated cosineSimilarity function
+		double similarity = cosineSimilarity(outputVector, vector, wordUsage, word, temperature);
+
+		if (similarity > 0) { // Skip words that are filtered by the threshold
+			similarityScores.push_back({ word, similarity });
+		}
 	}
 
 	// Sort words by similarity in descending order
@@ -199,6 +221,76 @@ std::vector<std::string> mapOutputToWords(const std::unordered_map<std::string, 
 	}
 
 	return topWords;
+}
+
+
+
+std::string generateSentence(
+	const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
+	const std::vector<double>& initialVector,
+	int maxLength, 
+	int topN,      
+	double temperature
+) {
+	std::vector<std::string> generatedWords;
+	std::vector<double> currentVector = initialVector;
+	std::unordered_map<std::string, int> wordUsage; // Track word frequencies
+	std::string eos = "<EOS>"; // Define the EOS token
+
+	// Random number generator
+	std::random_device rd;
+	std::mt19937 gen(rd());
+
+	for (int i = 0; i < maxLength; ++i) {
+		// Map output vector to top-N words with updated logic
+		std::vector<std::string> topWords = mapOutputToWords(
+			gloveVectors,
+			currentVector,
+			topN,
+			wordUsage,
+			temperature
+		);
+
+		if (topWords.empty()) {
+			std::cerr << "No suitable words found at step " << i << ".\n";
+			break;
+		}
+
+		// Randomly pick one from the top-N words
+		std::uniform_int_distribution<> dis(0, topWords.size() - 1);
+		std::string selectedWord = topWords[dis(gen)];
+
+		// Stop if EOS is generated
+		if (selectedWord == eos) {
+			break;
+		}
+
+		// Append the word to the output sentence
+		generatedWords.push_back(selectedWord);
+
+		// Update the word usage map
+		wordUsage[selectedWord]++;
+
+		// Update the vector using the selected word
+		std::vector<double> nextVector = gloveVectors.at(selectedWord);
+		std::transform(
+			currentVector.begin(), currentVector.end(),
+			nextVector.begin(),
+			currentVector.begin(),
+			[](double a, double b) { return 0.7 * a + 0.3 * b; }
+		);
+
+		// Debug: Print progress
+		std::cout << "Step " << i << ": Selected Word = " << selectedWord << "\n";
+		std::cout << "Generated Words So Far: ";
+		for (const auto& word : generatedWords) {
+			std::cout << word << " ";
+		}
+		std::cout << "\n";
+	}
+
+	// Assemble the final sentence
+	return assemblePhrase(generatedWords);
 }
 
 

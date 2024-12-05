@@ -1,11 +1,13 @@
 # ninja log v6
 26	879	7545997056561322	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/LSTM.cpp.obj	834841b942b11968
-18	948	7545997056481387	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
-22	1108	7545997056521309	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
-14	965	7545997056431404	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
-1108	1258	7545997067374235	NeuralNetwork/NeuralNetwork.exe	1a4a577d984775bb
+10	910	7549498341462046	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
+14	1138	7549498341501991	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
+5	955	7549498341422971	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
+1139	1340	7549498352753854	NeuralNetwork/NeuralNetwork.exe	1a4a577d984775bb
 13	24	7545997056086626	clean	8c45b54705a541e8
-14	1310	7548637181287376	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
-9	1335	7548637181287376	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
-18	1076	7548638239648890	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
-1077	1266	7548638250237377	NeuralNetwork/NeuralNetwork.exe	1a4a577d984775bb
+77	1972	7550927979419496	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
+68	1981	7550927979258622	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
+64	1611	7550928979170951	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/SelfAttention.cpp.obj	a57417a75345058d
+50	1647	7550928979020418	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/NeuralNetwork.cpp.obj	3601ecff31c0e0a9
+28	1836	7550929451657725	NeuralNetwork/CMakeFiles/NeuralNetwork.dir/Headers/TextProcessing.cpp.obj	17749b0b3463c732
+1837	2304	7550929469643027	NeuralNetwork/NeuralNetwork.exe	1a4a577d984775bb

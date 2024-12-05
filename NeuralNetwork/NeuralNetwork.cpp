@@ -88,10 +88,12 @@ int main() {
 			}
 			std::cout << "   } \n\n";
 
-			std::vector<std::string> mappedWords = mapOutputToWords(dk488621.glove_vectors, finalOutPut, 3); // Top 3 words
-			std::string constructedPhrase = assemblePhrase(mappedWords);
+			//std::vector<std::string> mappedWords = mapOutputToWords(dk488621.glove_vectors, finalOutPut, 3); // Top 3 words
+			//std::string constructedPhrase = assemblePhrase(mappedWords);
 
-			std::cout << "Constructed Phrase: " << constructedPhrase << std::endl;
+			std::string generatedSentence = generateSentence(dk488621.glove_vectors, finalOutPut);
+
+			std::cout << "Constructed Phrase: " << generatedSentence << std::endl;
 
 		}
 

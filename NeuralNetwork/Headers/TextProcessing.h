@@ -14,7 +14,8 @@
 #include "SelfAttention.h"
 
 
-
+constexpr double COSINE_THRESHOLD = 0.7; // Minimum similarity threshold
+constexpr double REPETITION_PENALTY = 0.1; // Penalty factor for repeated words
 
 class userInput {
 	public:
@@ -41,20 +42,26 @@ class userInput {
 
 //mapping the output to actual value
 //the calculator
-double cosineSimilarity(const std::vector<double>& vec1, const std::vector<double>& vec2);
-//the mapper
-std::vector<std::string> mapOutputToWords(const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
-	const std::vector<double>& outputVector, int topN);
+double cosineSimilarity(const std::vector<double>& vec1, const std::vector<double>& vec2,
+	const std::unordered_map<std::string, int>& wordUsage,
+	const std::string& candidateWord,
+	double temperature = 1.0);
+
+std::vector<std::string> mapOutputToWords(
+	const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
+	const std::vector<double>& outputVector,
+	int topN,
+	const std::unordered_map<std::string, int>& wordUsage = {}, // Optional
+	double temperature = 1.0);
 
 
-/*std::vector<std::string> mapOutputToWords(const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
+std::string generateSentence(
+	const std::unordered_map<std::string, std::vector<double>>& gloveVectors,
 	const std::vector<double>& initialVector,
-	int phraseLength = 3,
-	int topN = 3);*/
-
-//the finder
-std::string findClosestWord(const std::vector<double>& outputVector,
-const std::unordered_map<std::string, std::vector<double>>& gloveVectors);
+	int maxLength = 20,  // Max words in the sentence
+	int topN = 3 ,       // Consider top N words for diversity
+	double temperature = 1.0
+);
 
 
 std::string assemblePhrase(const std::vector<std::string>& words);
